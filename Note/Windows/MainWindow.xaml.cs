@@ -50,7 +50,7 @@ namespace Note
             AddNoteWindow addNoteWindow = new AddNoteWindow();
             addNoteWindow.Show();
             this.Close();
-
+            //
         }
     }
 }
