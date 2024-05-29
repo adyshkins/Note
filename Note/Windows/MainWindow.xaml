@@ -1,0 +1,84 @@
+﻿<Window x:Class="Note.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Note"
+        mc:Ignorable="d"
+        Title="Гланое окно" 
+        WindowStartupLocation="CenterScreen"
+        Height="768" Width="1024">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="Наши заметки"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="32"/>
+
+        <ListView x:Name="LvNote"
+                  Grid.Row="1" 
+                  VerticalAlignment="Center"
+                  HorizontalAlignment="Center"
+                  d:ItemsSource="{d:SampleData ItemCount=5}"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                  >
+
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="400"
+                          Height="150"
+                          Margin="8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border BorderThickness="1"
+                                Grid.RowSpan="3"
+                                BorderBrush="Gray">
+                            
+                        </Border>
+
+                        <TextBlock Grid.Row="0" 
+                                   Text="{Binding Title}"
+                                   FontSize="18"/>
+                        <TextBlock Grid.Row="1" 
+                                   Text="{Binding Author.NameAuthor}"
+                                   FontSize="16"/>
+
+                        <Button x:Name="BtnInfoNote" 
+                                Grid.Row="2"
+                                Margin="8"
+                                FontSize="16"
+                                Content="Подробнее"
+                                Click="BtnInfoNote_Click"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+        </ListView>
+
+        <Button x:Name="BtnAddNote"
+                Grid.Row="2"
+                Content="Добавить заметку"
+                FontSize="22"
+                Width="250"
+                Height="40"
+                HorizontalAlignment="Right"
+                Margin="16 0"
+                Click="BtnAddNote_Click"/>
+    </Grid>
+</Window>
