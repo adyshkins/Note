@@ -75,7 +75,7 @@
                 Grid.Row="2"
                 Content="Добавить заметку"
                 FontSize="22"
-                Width="250"
+                Width="260"
                 Height="40"
                 HorizontalAlignment="Right"
                 Margin="16 0"
